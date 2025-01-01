@@ -56,37 +56,41 @@
 
 <script>
     const openingTime = 9;
-    const closingTime = 17;
-    const now = new Date();
-    const currentHour = now.getHours();
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    const formattedDate = now.toLocaleDateString(undefined, options);
+const closingTime = 17;
+const now = new Date();
+const currentHour = now.getHours();
+const options = { weekday: 'long', month: 'long', day: 'numeric' };
+const formattedDate = now.toLocaleDateString(undefined, options);
 
-    const statusIndicator = document.querySelector(".status-indicator");
-    if (currentHour >= openingTime && currentHour < closingTime) {
-        statusIndicator.textContent = "Open";
-        statusIndicator.style.color = "green";
-    } else {
-        statusIndicator.textContent = `Closed until ${openingTime}:00 AM`;
-        statusIndicator.style.color = "red";
-    }
+const statusIndicator = document.querySelector(".status-indicator");
+if (currentHour >= openingTime && currentHour < closingTime) {
+    statusIndicator.textContent = "Open";
+    statusIndicator.style.color = "green";
+} else {
+    statusIndicator.textContent = `Closed until ${openingTime}:00 AM`;
+    statusIndicator.style.color = "red";
+}
 
-    const hoursContainer = document.querySelector(".hours-container");
-    const dateElement = document.createElement("p");
-    dateElement.classList.add("date");
-    dateElement.textContent = formattedDate;
-    hoursContainer.prepend(dateElement);
+const hoursContainer = document.querySelector(".hours-container");
+const dateElement = document.createElement("p");
+dateElement.classList.add("date");
+dateElement.textContent = formattedDate;
+hoursContainer.prepend(dateElement);
 
-    const phoneElement = document.createElement("p");
-    phoneElement.classList.add("phone");
-    phoneElement.textContent = "Phone: 555-555-5555";
-    hoursContainer.appendChild(phoneElement);
+const phoneElement = document.createElement("p");
+phoneElement.classList.add("phone");
+phoneElement.textContent = "Phone: 555-555-5555";
+hoursContainer.appendChild(phoneElement);
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
+document.querySelector('.close-menu').addEventListener('click', () => {
+    document.getElementById('menu-toggle').checked = false;
+}); // Added missing closing parenthesis and bracket
+
+document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         document.getElementById('menu-toggle').checked = false;
     });
-});
+}); // Added missing closing parenthesis and bracket
 
 </script>
 </body>

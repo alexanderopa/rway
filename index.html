@@ -8,18 +8,15 @@
 </head>
 <body>
   <nav class="navbar">
-    <!-- Logo -->
     <a href="#" class="logo">
         <img src="src/img/rtw.png" alt="Logo">
     </a>
 
-    <!-- Hours Container -->
     <div class="hours-container">
         <p class="hours">Hours: 9:00 AM - 5:00 PM</p>
         <p class="status">Currently: <span class="status-indicator">Open</span></p>
     </div>
 
-    <!-- Navigation Menu -->
     <div class="nav-container">
         <input type="checkbox" id="menu-toggle" class="menu-toggle">
         <label for="menu-toggle" class="menu-icon">
@@ -33,6 +30,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="close-menu">×</button>
     </div>
 </nav>
 
@@ -41,73 +39,52 @@
       <img src="src/img/summer23-powder-room-hero.jpg" alt="Powder Room Hero Image" class="hero-image">
       <div class="hero-text">
           <h1>Welcome to Our Plumbing Services</h1>
-          <p>
-              Riteway Plumbing Shop is one of the oldest, most established residential plumbing supplies and service companies in Edmonton.
-          </p>
-          <p>
-              Specializing in plumbing supplies and residential service, we strive to be the best, and the first to come to mind when any plumbing problems arise. At Riteway Plumbing Shop it is our philosophy to provide an exceptionally prompt, courteous, and clean service. We have worked hard to establish a reputation for quality work, dependability, and very competitive rates with your neighbours over the years.
-          </p>
+          <p>Riteway Plumbing Shop is one of the oldest, most established residential plumbing supplies and service companies in Edmonton.</p>
+          <p>Specializing in plumbing supplies and residential service, we strive to be the best, and the first to come to mind when any plumbing problems arise. At Riteway Plumbing Shop it is our philosophy to provide an exceptionally prompt, courteous, and clean service. We have worked hard to establish a reputation for quality work, dependability, and very competitive rates with your neighbours over the years.</p>
       </div>
   </div>
-  <!-- This container will hold the text for smaller screens -->
   <div class="hero-text-mobile">
       <h1>Welcome to Our Plumbing Services</h1>
-      <p>
-          Riteway Plumbing Shop is one of the oldest, most established residential plumbing supplies and service companies in Edmonton.
-      </p>
-      <p>
-          Specializing in plumbing supplies and residential service, we strive to be the best, and the first to come to mind when any plumbing problems arise. At Riteway Plumbing Shop it is our philosophy to provide an exceptionally prompt, courteous, and clean service. We have worked hard to establish a reputation for quality work, dependability, and very competitive rates with your neighbours over the years.
-      </p>
+      <p>Riteway Plumbing Shop is one of the oldest, most established residential plumbing supplies and service companies in Edmonton.</p>
+      <p>Specializing in plumbing supplies and residential service, we strive to be the best, and the first to come to mind when any plumbing problems arise. At Riteway Plumbing Shop it is our philosophy to provide an exceptionally prompt, courteous, and clean service. We have worked hard to establish a reputation for quality work, dependability, and very competitive rates with your neighbours over the years.</p>
   </div>
 </div>
 
+<div id="about" class="section">About Section</div>
+<div id="services" class="section">Services Section</div>
+<div id="contact" class="section">Contact Section</div>
 
+<script>
+    const openingTime = 9;
+    const closingTime = 17;
+    const now = new Date();
+    const currentHour = now.getHours();
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    const formattedDate = now.toLocaleDateString(undefined, options);
 
+    const statusIndicator = document.querySelector(".status-indicator");
+    if (currentHour >= openingTime && currentHour < closingTime) {
+        statusIndicator.textContent = "Open";
+        statusIndicator.style.color = "green";
+    } else {
+        statusIndicator.textContent = `Closed until ${openingTime}:00 AM`;
+        statusIndicator.style.color = "red";
+    }
 
+    const hoursContainer = document.querySelector(".hours-container");
+    const dateElement = document.createElement("p");
+    dateElement.classList.add("date");
+    dateElement.textContent = formattedDate;
+    hoursContainer.prepend(dateElement);
 
+    const phoneElement = document.createElement("p");
+    phoneElement.classList.add("phone");
+    phoneElement.textContent = "Phone: 555-555-5555";
+    hoursContainer.appendChild(phoneElement);
 
-    <div id="about" class="section">About Section</div>
-    <div id="services" class="section">Services Section</div>
-    <div id="contact" class="section">Contact Section</div>
-    <script>
-      // Set business hours
-      const openingTime = 9; // 9:00 AM
-      const closingTime = 17; // 5:00 PM
-  
-      // Get the current date and time
-      const now = new Date();
-      const currentHour = now.getHours();
-  
-      // Format the date as "Day, Month Date" (e.g., "Wednesday, January 1")
-      const options = { weekday: 'long', month: 'long', day: 'numeric' };
-      const formattedDate = now.toLocaleDateString(undefined, options);
-  
-      // Update the status dynamically
-      const statusIndicator = document.querySelector(".status-indicator");
-      if (currentHour >= openingTime && currentHour < closingTime) {
-          statusIndicator.textContent = "Open";
-          statusIndicator.style.color = "green";
-      } else {
-          statusIndicator.textContent = `Closed until ${openingTime}:00 AM`;
-          statusIndicator.style.color = "red";
-      }
-  
-      // Add the formatted date
-      const hoursContainer = document.querySelector(".hours-container");
-      const dateElement = document.createElement("p");
-      dateElement.classList.add("date");
-      dateElement.textContent = formattedDate;
-      hoursContainer.prepend(dateElement); // Add the date to the top of the container
-  
-      // Add the phone number at the end
-      const phoneElement = document.createElement("p");
-      phoneElement.classList.add("phone");
-      phoneElement.textContent = "Phone: 5ee-555-5555";
-      hoursContainer.appendChild(phoneElement); // Add the phone number at the end of the container
-  </script>
-  
-  
-  
-  
+    document.querySelector('.close-menu').addEventListener('click', () => {
+        document.getElementById('menu-toggle').checked = false;
+    });
+</script>
 </body>
 </html>

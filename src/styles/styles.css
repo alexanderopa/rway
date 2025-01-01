@@ -1,4 +1,3 @@
-/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -10,11 +9,10 @@ body {
     line-height: 1.6;
 }
 
-/* Navbar styles */
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Distributes space evenly */
+    justify-content: space-between;
     padding: 1rem 2rem;
     background: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -26,29 +24,26 @@ body {
 }
 
 .logo {
-    flex: 1; /* Take proportional space */
+    flex: 1;
 }
 
-/* For larger screens */
 .logo img {
-    width: clamp(200px, 20vw, 300px); /* Grows with viewport width */
+    width: clamp(200px, 20vw, 300px);
     height: auto;
 }
 
-/* Hours container styles */
 .hours-container {
-    flex: 2; /* Proportional space within the navbar */
+    flex: 2;
     display: flex;
-    flex-direction: column; /* Stack Hours and Currently vertically */
-    justify-content: center; /* Center the container vertically */
-    align-items: flex-start; /* Align Hours and Currently to the left */
-    text-align: left; /* Ensure the text aligns left */
-    padding-left: 3rem; /* Add padding to move away from the logo */
-    gap: 0.25rem; /* Add spacing between Hours and Currently */
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 3rem;
+    gap: 0.25rem;
     font-size: 16px;
     color: #333;
 }
-
 
 .hours, .status {
     margin: 0;
@@ -59,7 +54,6 @@ body {
     font-weight: bold;
 }
 
-/* Navigation styles */
 .nav-container {
     flex: 0 1 auto;
     position: relative;
@@ -84,7 +78,6 @@ body {
     color: #007BFF;
 }
 
-/* Menu toggle */
 .menu-toggle {
     display: none;
 }
@@ -95,7 +88,6 @@ body {
     gap: 4px;
     cursor: pointer;
     padding: 4px;
-
 }
 
 .menu-icon span {
@@ -106,52 +98,64 @@ body {
     transition: transform 0.3s, opacity 0.3s;
 }
 
-/* Section spacing */
 .section {
     padding: 80px 20px 40px;
     min-height: 100vh;
 }
 
-/* Mobile styles */
+/* Close button */
+.close-menu {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    z-index: 1000;
+}
+
 @media (max-width: 820px) {
     .navbar {
         display: flex;
         align-items: center;
-        justify-content: space-between; /* Ensure even spacing between items */
-        gap: 1rem; /* Add some spacing between navbar elements */
+        justify-content: space-between;
+        gap: 1rem;
         padding: 0.5rem 1rem;
     }
 
     .logo {
-        flex: 0 0 auto; /* Keep the logo from shrinking or growing */
+        flex: 0 0 auto;
     }
 
     .hours-container {
-        flex: 1; /* Allow hours-container to take up proportional space */
+        flex: 1;
         display: flex;
-        flex-direction: column; /* Keep stacking Hours and Currently vertically */
-        align-items: flex-start; /* Align text to the left */
-        justify-content: center; /* Vertically center the content */
-        padding-left: 2rem; /* Adjust padding for smaller viewports */
-        font-size: 16px; /* Reduce font size slightly for smaller screens */
-        gap: 0.25rem; /* Maintain space between Hours and Currently */
-        overflow: hidden; /* Prevent content from overflowing */
-        white-space: nowrap; /* Prevent wrapping */
-        text-overflow: ellipsis; /* Truncate if space is insufficient */
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-left: 2rem;
+        font-size: 16px;
+        gap: 0.25rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .menu-icon {
-        flex: 0 0 auto; /* Keep the menu-icon from growing or shrinking */
+        flex: 0 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: auto; /* Push it to the far right */
+        margin-left: auto;
     }
 
     .nav-container {
-        flex: 0 0 auto; /* Prevent nav-container from growing */
+        flex: 0 0 auto;
         display: flex;
-        justify-content: flex-end; /* Align menu to the right */
+        justify-content: flex-end;
     }
 
     .menu-icon span {
@@ -181,12 +185,20 @@ body {
         display: flex;
     }
 
+    .menu-toggle:checked ~ .close-menu {
+        display: block;
+    }
+
+    .menu-toggle:checked ~ .menu-icon {
+        display: none;
+    }
+
     .hero-text {
-        display: none !important; /* Ensure it hides properly */
+        display: none !important;
     }
 
     .hero-text-mobile {
-        display: block !important; /* Ensure it shows correctly */
+        display: block !important;
         padding: 1rem;
         text-align: left;
         font-size: 14px;
@@ -194,8 +206,6 @@ body {
     }
 }
 
-
-/* Larger screen adjustments */
 @media (min-width: 1200px) {
     .navbar {
         padding: 1rem 4rem;
@@ -207,21 +217,20 @@ body {
 }
 
 #home {
-    margin-top: 55px; /* Adjust based on the height of your header */
+    margin-top: 55px;
 }
-
 
 .hero-container {
     position: relative;
-    width: 100%; /* Full width of the section */
-    height: 60vh; /* Set a proportional height */
-    overflow: hidden; /* Prevent any overflow issues */
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
 }
 
 .hero-image {
-    width: 100%; /* Ensure the image spans the full width */
-    height: 100%; /* Ensure the image covers the full height */
-    object-fit: cover; /* Maintain aspect ratio while covering the container */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero-text {
@@ -232,18 +241,13 @@ body {
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.7); /* Darker background for better readability */
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 1.5rem;
     border-radius: 10px;
-    max-width: 600px; /* Restrict text width for better presentation */
-    line-height: 1.8; /* Add line spacing for readability */
+    max-width: 600px;
+    line-height: 1.8;
 }
-
 
 .hero-text-mobile {
-    display: none; /* Hide mobile text by default */
+    display: none;
 }
-
-
-
-

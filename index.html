@@ -82,9 +82,12 @@
     phoneElement.textContent = "Phone: 555-555-5555";
     hoursContainer.appendChild(phoneElement);
 
-    document.querySelector('.close-menu').addEventListener('click', () => {
+    document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
         document.getElementById('menu-toggle').checked = false;
     });
+});
+
 </script>
 </body>
 </html>

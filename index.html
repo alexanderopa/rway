@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Small Plumbing Company</title>
     <link rel="stylesheet" href="src/styles/styles.css">
+
 </head>
 <body>
   <nav class="navbar">
@@ -13,9 +14,25 @@
     </a>
 
     <div class="hours-container">
-        <p class="hours">Hours: 9:00 AM - 5:00 PM</p>
-        <p class="status">Currently: <span class="status-indicator">Open</span></p>
+        <p class="hours">
+            <span class="material-symbols-outlined">schedule</span>
+            Thursday Hours: 9:00 AM - 5:00 PM
+        </p>
+        <p class="status">
+            
+            <span class="status-indicator"></span>
+        </p>
+        <p class="contact">
+            <span class="material-symbols-outlined">mail</span>
+            ritewayplumbing@gmail.com
+        </p>
+        <p class="contact">
+            <span class="material-symbols-outlined">call</span>
+            555.555.5555
+        </p>
     </div>
+    
+    
 
     <div class="nav-container">
         <input type="checkbox" id="menu-toggle" class="menu-toggle">
@@ -55,42 +72,47 @@
 <div id="contact" class="section">Contact Section</div>
 
 <script>
-    const openingTime = 9;
+const openingTime = 9;
 const closingTime = 17;
 const now = new Date();
 const currentHour = now.getHours();
 const options = { weekday: 'long', month: 'long', day: 'numeric' };
 const formattedDate = now.toLocaleDateString(undefined, options);
 
+// Update status indicator
 const statusIndicator = document.querySelector(".status-indicator");
+const statusDot = document.createElement("span"); // Create a dot dynamically
+statusDot.classList.add("status-dot");
+statusIndicator.prepend(statusDot); // Add the dot to the status indicator
+
+// Determine if open or closed
 if (currentHour >= openingTime && currentHour < closingTime) {
-    statusIndicator.textContent = "Open";
-    statusIndicator.style.color = "green";
+    statusDot.style.backgroundColor = "green"; // Green for open
+    statusIndicator.append("Open"); // Append status text
 } else {
-    statusIndicator.textContent = `Closed until ${openingTime}:00 AM`;
-    statusIndicator.style.color = "red";
+    const nextOpenTime = `${openingTime}:00 AM`;
+    statusDot.style.backgroundColor = "red"; // Red for closed
+    statusIndicator.append(`Closed until ${nextOpenTime}`); // Append status text
 }
 
-const hoursContainer = document.querySelector(".hours-container");
-const dateElement = document.createElement("p");
-dateElement.classList.add("date");
-dateElement.textContent = formattedDate;
-hoursContainer.prepend(dateElement);
 
-const phoneElement = document.createElement("p");
-phoneElement.classList.add("phone");
-phoneElement.textContent = "Phone: 555-555-5555";
-hoursContainer.appendChild(phoneElement);
 
+// Close menu on click
 document.querySelector('.close-menu').addEventListener('click', () => {
     document.getElementById('menu-toggle').checked = false;
-}); // Added missing closing parenthesis and bracket
+});
 
+// Close menu when navigation links are clicked
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         document.getElementById('menu-toggle').checked = false;
     });
-}); // Added missing closing parenthesis and bracket
+});
+
+
+
+
+
 
 </script>
 </body>

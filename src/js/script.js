@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const hoursElement = document.querySelector(".hours");
         if (hoursElement) {
             const isMobile = window.matchMedia("(max-width: 820px)").matches;
-            const hoursText = isMobile ? "Thurs Hrs: 9 AM - 5 PM" : "Thursday Hours: 9:00 AM - 5:00 PM";
+            const hoursText = isMobile ? "Thurs Hrs: 9 - 5 PM" : "Thursday Hours: 9:00 AM - 5:00 PM";
             hoursElement.innerHTML = `
                 <span class="material-symbols-outlined">schedule</span>
                 ${hoursText}

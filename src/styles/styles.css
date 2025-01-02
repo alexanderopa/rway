@@ -180,6 +180,14 @@
       display: none;
     }
 
+    .hours-container {
+        flex: 1; /* so it sits in the center */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+      }
+
     .hero-text {
         display: none !important;
     }
